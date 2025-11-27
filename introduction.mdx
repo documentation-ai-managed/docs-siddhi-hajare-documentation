@@ -1,0 +1,113 @@
+---
+title: Introduction
+description: Overview of Siddhi Hajare Documentation and its core capabilities
+---
+
+## Getting Started with Siddhi Hajare Documentation
+
+Siddhi Hajare Documentation provides a comprehensive platform for organizing and managing project documentation efficiently. Whether you're building APIs, creating guides, or maintaining technical knowledge bases, our system offers intuitive tools to streamline your documentation workflow.
+
+<Columns cols={3}>
+  <Card title="Quick Setup" icon="zap" href="/getting-started">
+    Get up and running in minutes with our streamlined setup process.
+  </Card>
+  <Card title="API Integration" icon="code" href="/api-overview">
+    Connect your documentation with powerful APIs for automation.
+  </Card>
+  <Card title="Advanced Features" icon="settings" href="/advanced-topics">
+    Explore advanced capabilities for complex documentation needs.
+  </Card>
+</Columns>
+
+## Key Features
+
+<Expandable title="Documentation Management" default-open="true">
+  Siddhi Hajare Documentation enables you to create, organize, and maintain technical documentation with ease. You can structure your content using flexible page hierarchies and categorize information through custom tags.
+</Expandable>
+
+<Expandable title="Collaboration Tools" default-open="false">
+  Work seamlessly with your team using built-in collaboration features. Share drafts, request reviews, and maintain version control for all your documentation projects.
+</Expandable>
+
+<Expandable title="API Integration" default-open="false">
+  Integrate with external systems through our comprehensive API. Automate documentation updates, sync with code repositories, and embed documentation into your development workflow.
+</Expandable>
+
+## Installation Guide
+
+<Steps>
+  <Step title="Create Account" icon="user">
+    Sign up for a Siddhi Hajare Documentation account at our website.
+  </Step>
+  <Step title="Set Up Workspace" icon="folder">
+    Create your first workspace and invite team members.
+  </Step>
+  <Step title="Import Content" icon="upload">
+    Import existing documentation or start creating new pages.
+  </Step>
+  <Step title="Configure Settings" icon="settings">
+    Customize your workspace settings and permissions.
+  </Step>
+</Steps>
+
+## Supported Platforms
+
+<Tabs>
+  <Tab title="Web" icon="globe">
+    Access your documentation through our web interface from any browser.
+  </Tab>
+  <Tab title="API" icon="terminal">
+    Integrate with our REST API for programmatic access.
+  </Tab>
+  <Tab title="CLI" icon="code">
+    Use our command-line interface for advanced operations.
+  </Tab>
+</Tabs>
+
+## Code Examples
+
+<CodeGroup tabs="JavaScript,Python">
+  ```javascript
+const client = new SiddhiDocsClient({
+  apiKey: 'your-api-key'
+});
+
+await client.createPage({
+  title: 'New Documentation',
+  content: '# Welcome\n\nThis is your new page.'
+});
+```
+  ```python
+from siddhi_docs import Client
+
+client = Client(api_key='your-api-key')
+client.create_page(
+    title='New Documentation',
+    content='# Welcome\n\nThis is your new page.'
+)
+```
+</CodeGroup>
+
+<Callout kind="tip">Start with our getting started guide to learn the fundamentals.</Callout>
+
+## Common Use Cases
+
+| Feature | Use Case | Benefit |
+|---------|----------|---------|
+| Version Control | Track documentation changes | Maintain history and rollback capabilities |
+| Search | Find information quickly | Improve productivity with fast content discovery |
+| Export | Generate PDFs or HTML | Share documentation offline |
+
+Our platform supports over 500 organizations in managing their technical documentation effectively. With intuitive interfaces and powerful automation, you can focus on content creation while we handle the infrastructure.
+
+<ExpandableGroup>
+  <Expandable title="How do I import existing documentation?">
+    You can import Markdown files, HTML content, or connect to external repositories like GitHub.
+  </Expandable>
+  <Expandable title="What integrations are available?">
+    We support integrations with popular tools including Slack, Jira, and GitHub.
+  </Expandable>
+  <Expandable title="Is there a free tier?">
+    Yes, our free tier includes up to 10 pages and basic collaboration features.
+  </Expandable>
+</ExpandableGroup>

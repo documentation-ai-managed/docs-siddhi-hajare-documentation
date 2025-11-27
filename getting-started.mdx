@@ -1,0 +1,122 @@
+---
+title: Getting Started
+description: Step-by-step guide to set up and begin using Siddhi Hajare Documentation
+---
+
+## Quick Start Guide
+
+Welcome to Siddhi Hajare Documentation! This guide walks you through setting up your workspace and creating your first documentation pages. Follow these steps to get started quickly.
+
+<Steps>
+  <Step title="Create Your Account" icon="user">
+    Visit our website and sign up for a free account. Provide your email address and create a secure password.
+  </Step>
+  <Step title="Verify Email" icon="mail">
+    Check your email for a verification link. Click the link to activate your account.
+  </Step>
+  <Step title="Set Up Workspace" icon="folder">
+    Create your first workspace by choosing a name and description for your documentation project.
+  </Step>
+  <Step title="Invite Team Members" icon="users">
+    Add team members by entering their email addresses and assigning appropriate roles.
+  </Step>
+</Steps>
+
+## Creating Your First Page
+
+<Tabs>
+  <Tab title="Web Interface" icon="globe">
+    Use our drag-and-drop editor to create pages visually. Simply add headings, text, and media elements.
+  </Tab>
+  <Tab title="Markdown" icon="file-text">
+    Write in Markdown for quick content creation. Our editor supports all standard Markdown syntax.
+  </Tab>
+  <Tab title="API" icon="code">
+    Create pages programmatically using our REST API for automation.
+  </Tab>
+</Tabs>
+
+<CodeGroup tabs="JavaScript,cURL">
+  ```javascript
+const response = await fetch('/api/pages', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${API_TOKEN}`
+  },
+  body: JSON.stringify({
+    title: 'Getting Started',
+    content: '# Welcome\n\nThis is your first page.',
+    workspaceId: 'your-workspace-id'
+  })
+});
+
+const page = await response.json();
+console.log('Created page:', page.id);
+```
+  ```bash
+curl -X POST https://api.siddhidocs.com/pages \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_API_TOKEN" \
+  -d '{
+    "title": "Getting Started",
+    "content": "# Welcome\\n\\nThis is your first page.",
+    "workspaceId": "your-workspace-id"
+  }'
+```
+</CodeGroup>
+
+## Organizing Content
+
+<Expandable title="Creating Categories" default-open="true">
+  Organize your documentation into logical categories. Create folders and subfolders to structure your content hierarchy.
+</Expandable>
+
+<Expandable title="Using Tags" default-open="false">
+  Apply tags to pages for better discoverability. Tags help users find related content quickly.
+</Expandable>
+
+<Expandable title="Version Control" default-open="false">
+  Enable version control to track changes and maintain documentation history. Compare versions and rollback when needed.
+</Expandable>
+
+<Callout kind="info">Tip: Start with a clear structure. Plan your documentation hierarchy before adding content.</Callout>
+
+## Basic Formatting
+
+| Element | Markdown | Result |
+|---------|----------|--------|
+| Heading | `# Title` | Large heading |
+| Bold | `**text**` | **Bold text** |
+| Italic | `*text*` | *Italic text* |
+| Code | `` `code` `` | `inline code` |
+| Link | `[text](url)` | [link](url) |
+
+## Collaboration Features
+
+<Columns cols={2}>
+  <Card title="Comments" icon="message-square" href="#comments">
+    Add comments to pages and discuss changes with your team.
+  </Card>
+  <Card title="Reviews" icon="check-circle" href="#reviews">
+    Submit pages for review and approval before publishing.
+  </Card>
+</Columns>
+
+## Common Pitfalls
+
+<ExpandableGroup>
+  <Expandable title="Why can't I save my page?">
+    Check that you have write permissions for the workspace and that the page title is unique.
+  </Expandable>
+  <Expandable title="Images not displaying">
+    Ensure image URLs are accessible and use supported formats like PNG, JPG, or GIF.
+  </Expandable>
+  <Expandable title="API authentication failing">
+    Verify your API token is valid and has the necessary permissions for the operation.
+  </Expandable>
+</ExpandableGroup>
+
+## Next Steps
+
+Once you've completed the basic setup, explore our advanced features like custom themes, automated publishing, and integration with external tools. Check out our API overview and advanced topics guides for more information.

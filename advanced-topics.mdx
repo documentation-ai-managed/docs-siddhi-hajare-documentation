@@ -1,0 +1,162 @@
+---
+title: Advanced Topics
+description: Deep dive into advanced features and capabilities of Siddhi Hajare Documentation
+---
+
+## Custom Themes and Branding
+
+Transform your documentation with custom themes that match your brand identity. Siddhi Hajare Documentation supports extensive customization options for colors, fonts, and layouts.
+
+<Steps>
+  <Step title="Access Theme Settings" icon="settings">
+    Navigate to workspace settings and select the Themes tab.
+  </Step>
+  <Step title="Configure Colors" icon="palette">
+    Choose primary and secondary colors that align with your brand guidelines.
+  </Step>
+  <Step title="Upload Assets" icon="image">
+    Add custom logos, favicons, and brand assets.
+  </Step>
+  <Step title="Preview and Apply" icon="eye">
+    Preview your theme changes and apply them to your workspace.
+  </Step>
+</Steps>
+
+<CodeGroup tabs="CSS,JSON">
+  ```css
+/* Custom theme CSS */
+:root {
+  --brand-primary: #3B82F6;
+  --brand-secondary: #1E40AF;
+  --text-primary: #1F2937;
+  --text-secondary: #6B7280;
+  --background-primary: #FFFFFF;
+  --background-secondary: #F9FAFB;
+}
+
+.documentation-header {
+  background-color: var(--brand-primary);
+  color: white;
+}
+
+.page-content {
+  color: var(--text-primary);
+  background: var(--background-primary);
+}
+```
+  ```json
+{
+  "theme": {
+    "colors": {
+      "primary": "#3B82F6",
+      "secondary": "#1E40AF",
+      "text": "#1F2937",
+      "background": "#FFFFFF"
+    },
+    "fonts": {
+      "heading": "Inter",
+      "body": "Inter"
+    },
+    "layout": {
+      "sidebarWidth": "280px",
+      "maxWidth": "1200px"
+    }
+  }
+}
+```
+</CodeGroup>
+
+## Advanced Search and Filtering
+
+<Expandable title="Full-Text Search" default-open="true">
+  Our advanced search engine supports boolean operators, fuzzy matching, and field-specific queries to help users find exactly what they need.
+</Expandable>
+
+<Expandable title="Content Filtering" default-open="false">
+  Filter documentation by tags, authors, date ranges, and content types to narrow down results efficiently.
+</Expandable>
+
+<Expandable title="Search Analytics" default-open="false">
+  Track search patterns and popular queries to improve content discoverability and user experience.
+</Expandable>
+
+## Automated Publishing Workflows
+
+<Tabs>
+  <Tab title="Git Integration" icon="git-branch">
+    Connect your documentation to Git repositories for version control and automated publishing.
+  </Tab>
+  <Tab title="CI/CD Pipelines" icon="refresh-cw">
+    Integrate with CI/CD systems to automatically publish documentation updates.
+  </Tab>
+  <Tab title="Scheduled Publishing" icon="calendar">
+    Set up automated publishing schedules for regular content updates.
+  </Tab>
+</Tabs>
+
+<Callout kind="tip">Automate your documentation publishing to keep content synchronized with code changes.</Callout>
+
+## User Management and Permissions
+
+<Columns cols={3}>
+  <Card title="Role-Based Access" icon="shield" href="#roles">
+    Define granular permissions with custom roles.
+  </Card>
+  <Card title="SSO Integration" icon="users" href="#sso">
+    Connect with enterprise identity providers.
+  </Card>
+  <Card title="Audit Logs" icon="file-text" href="#audit">
+    Track all user actions and changes.
+  </Card>
+</Columns>
+
+## Performance Optimization
+
+| Technique | Description | Impact |
+|-----------|-------------|--------|
+| Content Caching | Cache frequently accessed pages | Reduces load times by `>50%` |
+| Image Optimization | Compress and resize images | Improves page load speed |
+| CDN Integration | Distribute content globally | Faster access worldwide |
+| Lazy Loading | Load content on demand | Better initial page performance |
+
+## Monitoring and Analytics
+
+<ExpandableGroup>
+  <Expandable title="Usage Analytics">
+    Track page views, user engagement, and popular content to understand how your documentation is being used.
+  </Expandable>
+  <Expandable title="Performance Metrics">
+    Monitor response times, error rates, and system health to ensure optimal performance.
+  </Expandable>
+  <Expandable title="Content Insights">
+    Analyze which topics are most searched and viewed to guide content creation priorities.
+  </Expandable>
+</ExpandableGroup>
+
+## Backup and Recovery
+
+<Steps>
+  <Step title="Enable Backups" icon="database">
+    Configure automatic backups in workspace settings.
+  </Step>
+  <Step title="Test Recovery" icon="refresh-cw">
+    Regularly test backup restoration procedures.
+  </Step>
+  <Step title="Monitor Backups" icon="eye">
+    Track backup status and receive alerts for failures.
+  </Step>
+</Steps>
+
+## Troubleshooting Advanced Issues
+
+<ExpandableGroup>
+  <Expandable title="Performance Degradation">
+    Check database indexes, optimize queries, and scale infrastructure as needed.
+  </Expandable>
+  <Expandable title="Integration Failures">
+    Verify API endpoints, check authentication, and review webhook configurations.
+  </Expandable>
+  <Expandable title="Content Sync Issues">
+    Ensure proper permissions and validate data formats for external integrations.
+  </Expandable>
+</ExpandableGroup>

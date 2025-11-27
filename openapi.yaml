@@ -1,0 +1,196 @@
+openapi: '3.0.0'
+info:
+  version: 1.0.0
+  title: Siddhi Hajare Documentation API
+  license:
+    name: MIT
+servers:
+  - url: https://api.siddhidocs.com/v1
+paths:
+  /docs:
+    get:
+      summary: List all documentation pages
+      operationId: listDocs
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          schema:
+            type: integer
+            format: int32
+      responses:
+        200:
+          description: An paged array of documentation pages
+          headers:
+            x-next:
+              description: A link to the next page of responses
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Docs'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Create a new documentation page
+      operationId: createDocs
+      responses:
+        201:
+          description: Page created successfully
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /docs/{docId}:
+    get:
+      summary: Retrieve details for a specific documentation page
+      operationId: showDocById
+      parameters:
+        - name: docId
+          in: path
+          required: true
+          description: The unique identifier of the documentation page
+          schema:
+            type: string
+      responses:
+        200:
+          description: Detailed information about the requested documentation page
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Docs'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      summary: Update an existing documentation page
+      operationId: updateDoc
+      responses:
+        200:
+          description: Page updated successfully
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      summary: Delete a documentation page
+      operationId: deleteDoc
+      responses:
+        204:
+          description: Page deleted successfully
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /workspaces:
+    get:
+      summary: List all workspaces in the organization
+      operationId: listWorkspaces
+      parameters:
+        - name: limit
+          in: query
+          description: Number of workspaces to return (max 50)
+          required: false
+          schema:
+            type: integer
+            format: int32
+      responses:
+        200:
+          description: A paginated list of workspaces with their basic information
+          headers:
+            x-next:
+              description: Link to the next page of results
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Workspaces'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Create a new workspace for organizing documentation
+      operationId: createWorkspace
+      responses:
+        201:
+          description: Workspace created successfully with initial configuration
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Doc:
+      required:
+        - id
+        - title
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        content:
+          type: string
+        workspaceId:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    Docs:
+      type: array
+      items:
+        $ref: '#/components/schemas/Doc'
+    Workspace:
+      required:
+        - id
+        - name
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        ownerId:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+    Workspaces:
+      type: array
+      items:
+        $ref: '#/components/schemas/Workspace'
+    Error:
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string

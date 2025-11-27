@@ -1,0 +1,163 @@
+---
+title: API Overview
+description: Comprehensive guide to Siddhi Hajare Documentation APIs for integration and automation
+---
+
+## API Fundamentals
+
+Siddhi Hajare Documentation provides a powerful REST API that allows you to programmatically manage your documentation. Whether you're building custom integrations, automating workflows, or syncing with external systems, our API offers comprehensive endpoints for all platform features.
+
+<Expandable title="Authentication" default-open="true">
+  All API requests require authentication using Bearer tokens. Obtain your API key from the workspace settings and include it in the Authorization header.
+</Expandable>
+
+<Expandable title="Rate Limits" default-open="false">
+  The API enforces rate limits to ensure fair usage. Free accounts have 100 requests per hour, while paid plans offer higher limits.
+</Expandable>
+
+<Expandable title="Error Handling" default-open="false">
+  API responses include standard HTTP status codes. Check the response body for detailed error messages and resolution steps.
+</Expandable>
+
+## Core Endpoints
+
+<Tabs>
+  <Tab title="Pages" icon="file-text">
+    Create, read, update, and delete documentation pages. Supports Markdown and HTML content.
+  </Tab>
+  <Tab title="Workspaces" icon="folder">
+    Manage workspaces and their settings. Control user access and workspace configuration.
+  </Tab>
+  <Tab title="Users" icon="users">
+    Handle user management and permissions within your organization.
+  </Tab>
+</Tabs>
+
+<CodeGroup tabs="JavaScript,Python">
+  ```javascript
+// Create a new page
+const createPage = async (title, content) => {
+  const response = await fetch('/api/v1/pages', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${process.env.API_TOKEN}`
+    },
+    body: JSON.stringify({
+      title,
+      content,
+      workspaceId: 'workspace-123',
+      tags: ['api', 'guide']
+    })
+  });
+  
+  if (!response.ok) {
+    throw new Error(`API error: ${response.status}`);
+  }
+  
+  return await response.json();
+};
+
+// Usage
+const newPage = await createPage(
+  'API Integration Guide',
+  '# Introduction\n\nThis guide covers API integration.'
+);
+console.log('Page created:', newPage.id);
+```
+  ```python
+import requests
+from typing import Dict, Any
+
+def create_page(api_token: str, title: str, content: str) -> Dict[str, Any]:
+    """Create a new documentation page."""
+    url = 'https://api.siddhidocs.com/v1/pages'
+    headers = {
+        'Content-Type': 'application/json',
+        'Authorization': f'Bearer {api_token}'
+    }
+    data = {
+        'title': title,
+        'content': content,
+        'workspaceId': 'workspace-123',
+        'tags': ['api', 'guide']
+    }
+    
+    response = requests.post(url, json=data, headers=headers)
+    response.raise_for_status()
+    
+    return response.json()
+
+# Usage
+page = create_page(
+    api_token='your-token-here',
+    title='API Integration Guide',
+    content='# Introduction\n\nThis guide covers API integration.'
+)
+print(f"Page created: {page['id']}")
+```
+</CodeGroup>
+
+## Webhooks
+
+<Steps>
+  <Step title="Configure Webhook" icon="settings">
+    Set up webhook endpoints in your workspace settings to receive real-time notifications.
+  </Step>
+  <Step title="Handle Events" icon="bell">
+    Process webhook payloads for events like page updates, user changes, and workspace modifications.
+  </Step>
+  <Step title="Verify Signatures" icon="shield">
+    Validate webhook signatures to ensure request authenticity.
+  </Step>
+</Steps>
+
+<Callout kind="info">Webhooks help you stay synchronized with documentation changes across your systems.</Callout>
+
+## SDKs and Libraries
+
+| Language | Package | Installation |
+|----------|---------|-------------|
+| JavaScript | `@siddhidocs/sdk` | `npm install @siddhidocs/sdk` |
+| Python | `siddhi-docs` | `pip install siddhi-docs` |
+| Java | `com.siddhidocs:sdk` | Maven Central |
+| Go | `github.com/siddhidocs/go-sdk` | `go get github.com/siddhidocs/go-sdk` |
+
+## Best Practices
+
+<ExpandableGroup>
+  <Expandable title="API Versioning">
+    Always specify API versions in your requests. Use headers like `Accept: application/vnd.siddhidocs.v1+json`.
+  </Expandable>
+  <Expandable title="Error Handling">
+    Implement proper error handling with retry logic for transient failures.
+  </Expandable>
+  <Expandable title="Pagination">
+    Use pagination parameters for large result sets to avoid performance issues.
+  </Expandable>
+</ExpandableGroup>
+
+## Security Considerations
+
+<Columns cols={2}>
+  <Card title="Token Management" icon="key" href="#tokens">
+    Regularly rotate API tokens and revoke compromised credentials.
+  </Card>
+  <Card title="Access Control" icon="lock" href="#access">
+    Implement least-privilege access for API integrations.
+  </Card>
+</Columns>
+
+## Troubleshooting
+
+<ExpandableGroup>
+  <Expandable title="Authentication Errors">
+    Verify your API token is valid and has the required permissions. Check token expiration dates.
+  </Expandable>
+  <Expandable title="Rate Limit Exceeded">
+    Implement exponential backoff retry logic. Monitor your request patterns.
+  </Expandable>
+  <Expandable title="Invalid Request Format">
+    Ensure JSON payloads are properly formatted and required fields are included.
+  </Expandable>
+</ExpandableGroup>
